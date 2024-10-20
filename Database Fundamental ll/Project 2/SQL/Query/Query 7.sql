@@ -1,0 +1,5 @@
+/*List of information of medication appointment booked by a patient. The retrieved information should consist of patient ID, patient name, phone number, and reason of appointment, doctor ID, doctor name, location, time and date.*/
+
+SELECT appointment.Patient_ID, patient.Patient_Name, patient.Patient_PhoneNum, patient_treatment_and_medication.Treatment_Diag as Reason_Of_Appointment, appointment.Staff_No as Doctor_ID, appointment.Staff_Name as Doctor_Name, patient.Address as Location, appointment.Appointment_Date, appointment.Appointment_Time
+FROM appointment, patient_treatment_and_medication, patient, medication_patient
+WHERE appointment.Patient_ID = patient.Patient_ID AND patient_treatment_and_medication.Drug_No = medication_patient.Drug_No AND medication_patient.Patient_ID = appointment.Patient_ID

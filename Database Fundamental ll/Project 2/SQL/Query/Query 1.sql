@@ -1,0 +1,5 @@
+/*A list of the patient details currently on the waiting list for particular ward (at least 4 types of ward). The retrieved list should consist of patient ID, full name, ward ID, ward name, type of disease, doctor ID, doctor name and admission date.*/
+
+SELECT patient_waiting_list.Patient_ID, Date_Placed_Waitlist, Duration_Of_Stay, patient_waiting_list.Ward_ID, patient.patient_name, (patient_treatment_and_medication.Treatment_Diag) as "Type of Disease",(staff.Staff_No) as "Doctor ID", (staff.Staff_Name) as "Doctor Name", ward.Ward_Name
+FROM patient_waiting_list, patient, ward, patient_treatment_and_medication, staff, medication_patient
+WHERE patient.Patient_ID = patient_waiting_list.Patient_ID AND patient_waiting_list.Ward_ID = ward.Ward_ID AND ward.Doc_No = staff.Staff_No AND patient_treatment_and_medication.Drug_No = medication_patient.Drug_No AND medication_patient.Patient_ID = patient.Patient_ID;
